@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maktab testlari</title>
+<style>
+:root{--card:rgba(255,255,255,.07);--ink:#e8eefc;--mute:#a9b6d3;--line:rgba(255,255,255,.16);--brand:#4b7bff;--accent:#ffd54a;--sel:rgba(75,123,255,.3);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;color:var(--ink);font:16px/1.5 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif;background:radial-gradient(1100px 560px at 15% -10%,#1f3f86 0%,transparent 62%),radial-gradient(900px 480px at 100% 8%,#3b2b7d 0%,transparent 58%),#0b1430 fixed}
+header{text-align:center;padding:24px 16px 4px}
+header b{display:block;color:var(--accent);font:700 32px Georgia,"Times New Roman",serif;letter-spacing:.3px}
+header small{color:var(--mute)}
+main{max-width:560px;margin:0 auto;padding:16px 16px 48px}
+h1{font:600 26px/1.25 Georgia,"Times New Roman",serif;margin:6px 0 6px}
+p.sub{color:var(--mute);margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.grade{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 8px;font:700 30px Georgia,serif;color:var(--accent);cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.35);backdrop-filter:blur(14px);transition:transform .15s,box-shadow .15s}
+.grade small{display:block;font:14px "Segoe UI",system-ui,sans-serif;color:var(--mute);margin-top:2px}
+.grade:hover,.grade:focus-visible{transform:translateY(-4px);outline:2px solid var(--brand);box-shadow:0 14px 34px rgba(60,100,255,.35)}
+#s2,#s3,#s4{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.35);backdrop-filter:blur(14px)}
+label{display:block;font-weight:600;margin:14px 0 6px}
+input,select{width:100%;min-height:46px;padding:10px 12px;border:1px solid rgba(255,255,255,.22);border-radius:12px;background:rgba(8,16,40,.55);color:var(--ink);font:inherit}
+select option{background:#101c40;color:#e8eefc}
+input:focus,select:focus{outline:2px solid var(--brand);outline-offset:1px}
+.row{display:grid;grid-template-columns:1fr 100px;gap:10px}
+.btn{display:block;width:100%;min-height:48px;margin-top:22px;padding:0 16px;border:0;border-radius:12px;background:linear-gradient(135deg,#4b7bff,#6a4bff);color:#fff;font:600 16px "Segoe UI",system-ui,sans-serif;cursor:pointer;box-shadow:0 8px 22px rgba(75,123,255,.4)}
+.btn:hover{filter:brightness(1.1)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.back{background:none;border:0;color:var(--mute);padding:4px 0;font:inherit;cursor:pointer;margin-bottom:6px}
+.back:hover{color:var(--ink)}
+.bar{height:8px;background:rgba(255,255,255,.12);border-radius:4px;overflow:hidden;margin:8px 0 18px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#4b7bff,#9a7bff);border-radius:4px;transition:width .25s}
+.meta{display:flex;justify-content:space-between;color:var(--mute);font-size:14px}
+.q{font:600 20px/1.4 Georgia,serif;margin:0 0 16px}
+.opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;color:var(--ink);font:inherit;cursor:pointer;transition:background .15s,border-color .15s}
+.opt:hover{background:rgba(255,255,255,.12)}
+.opt b{min-width:24px;color:var(--accent)}
+.opt.on{background:var(--sel);border-color:#7fa0ff;box-shadow:0 0 0 1px #7fa0ff,0 8px 22px rgba(75,123,255,.3)}
+.score{text-align:center;background:rgba(8,16,40,.45);border:1px solid var(--line);border-radius:16px;padding:28px 14px;margin:14px 0}
+.score .n{font:700 56px Georgia,serif;color:var(--accent)}
+.score .g{font:600 22px Georgia,serif;margin-top:4px}
+.who{color:var(--mute);font-size:15px}
+.hide{display:none}
+.err{color:#ff8a8a;margin-top:10px;min-height:20px;font-weight:600}
+#warn{background:#c73a2f;color:#fff;padding:10px 14px;border-radius:12px;margin-bottom:12px;font-weight:600}
+#s3{user-select:none;-webkit-user-select:none}
+@media (min-width:900px){
+header{padding-top:32px}
+header b{font-size:40px}
+main{max-width:1000px;padding:32px 32px 64px}
+h1{font-size:34px}
+p.sub{font-size:18px;margin-bottom:24px}
+.grid{grid-template-columns:repeat(3,1fr);gap:18px}
+.grade{padding:44px 8px;font-size:40px}
+#s2,#s3,#s4{margin:0 auto;padding:32px 40px}
+#s2,#s4{max-width:620px}
+#s3{max-width:780px}
+.q{font-size:24px;margin-bottom:20px}
+#opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt{margin-bottom:0}
+.btn{width:auto;min-width:240px;margin-left:auto}
+}
+@media (prefers-reduced-motion:reduce){.bar i,.grade,.opt{transition:none}}
+</style>
+</head>
+<body>
+<header><b>Maktab testlari</b><small>23-maktab · onlayn test</small></header>
+<main>
+
+<section id="s1">
+  <h1>Sinfingizni tanlang</h1>
+  <p class="sub">Test ishlash uchun sinfni bosing.</p>
+  <div class="grid" id="grades"></div>
+</section>
+
+<section id="s2" class="hide">
+  <button class="back" id="back1">‹ Sinfni oʻzgartirish</button>
+  <h1><span id="gtitle"></span>-sinf</h1>
+  <p class="sub">Maʼlumotlaringizni kiriting.</p>
+  <p class="sub">Test vaqtida boshqa oynaga oʻtish, nusxalash yoki oʻng tugmani bosish qoidabuzarlik hisoblanadi. 3 marta buzilsa test avtomatik yakunlanadi. Har fandan faqat bir marta test ishlash mumkin.</p>
+  <label for="fn">Ism</label><input id="fn" autocomplete="off">
+  <label for="ln">Familya</label><input id="ln" autocomplete="off">
+  <div class="row">
+    <div><label for="sub">Fan</label><select id="sub"></select></div>
+    <div><label for="cl">Sinf harfi</label><select id="cl"></select></div>
+  </div>
+  <button class="btn" id="start">Testni boshlash</button>
+  <div class="err" id="serr"></div>
+</section>
+
+<section id="s3" class="hide">
+  <div id="warn" class="hide"></div>
+  <div class="meta"><span id="who"></span><span id="cnt"></span></div>
+  <div class="bar"><i id="prog"></i></div>
+  <p class="q" id="qt"></p>
+  <div id="opts"></div>
+  <button class="btn" id="next">Keyingi savol</button>
+  <button class="btn" id="finish">Testni yakunlash</button>
+</section>
+
+<section id="s4" class="hide">
+  <h1>Natija</h1>
+  <p class="who" id="who2"></p>
+  <p class="err" id="endnote"></p>
+  <div class="score"><div class="n" id="pct"></div><div id="raw" class="who"></div><div class="g" id="grade"></div></div>
+  <button class="btn" id="word">Testni Wordda saqlash</button>
+</section>
+
+</main>
+<script>
+var DEMO = {
+  "Matematika":[
+    ["12 × 8 necha?",["86","96","98","108"],1],
+    ["Uchburchak burchaklari yigʻindisi necha gradus?",["90","180","270","360"],1],
+    ["Qaysi son tub?",["21","27","29","33"],2],
+    ["3x = 24 boʻlsa, x necha?",["6","7","8","9"],2]],
+  "Ona tili":[
+    ["Qaysi soʻz ot turkumiga kiradi?",["yugurmoq","kitob","chiroyli","tez"],1],
+    ["Oʻzbek alifbosida nechta harf bor?",["26","29","32","35"],2],
+    ["“Katta” soʻzining antonimi qaysi?",["uzun","kichik","keng","baland"],1],
+    ["Qaysi gap soʻroq gap?",["Kitob oʻqidim.","Qani, oʻqing!","Bugun havo qanday?","Qanday goʻzal tong!"],2]],
+  "Ingliz tili":[
+    ["“Book” soʻzining tarjimasi?",["qalam","kitob","stol","eshik"],1],
+    ["I ___ a student.",["is","are","am","be"],2],
+    ["“Red” qaysi rang?",["koʻk","yashil","qizil","sariq"],2],
+    ["“Thank you” nima degani?",["Salom","Rahmat","Xayr","Kechirasiz"],1]]
+};
+var $=function(i){return document.getElementById(i)};
+var S={grade:null,fn:"",ln:"",cl:"",sub:"",qs:[],i:0,ans:[]};
+function show(id){["s1","s2","s3","s4"].forEach(function(x){$(x).classList.toggle("hide",x!==id)});window.scrollTo(0,0)}
+
+for(var g=6;g<=11;g++){(function(g){var b=document.createElement("button");b.className="grade";b.innerHTML=g+"<small>sinf</small>";b.onclick=function(){S.grade=g;$("gtitle").textContent=g;show("s2")};$("grades").appendChild(b)})(g)}
+Object.keys(DEMO).forEach(function(k){$("sub").add(new Option(k,k))});
+"ABDEFGH".split("").forEach(function(c){$("cl").add(new Option(c,c))});
+$("back1").onclick=function(){show("s1")};
+
+$("start").onclick=function(){
+  var fn=$("fn").value.trim(),ln=$("ln").value.trim();
+  $("serr").textContent="";if(!fn||!ln){$("serr").textContent="Ism va familyani kiriting.";return}
+  S.fn=fn;S.ln=ln;S.cl=$("cl").value;S.sub=$("sub").value;
+  var key=[fn,ln,S.grade,S.cl,S.sub].join("|").toLowerCase();
+  if(DONE()[key]){$("serr").textContent="Siz bu fandan test topshirgansiz. Qayta kirish mumkin emas.";return}
+  markDone(key);S.v=0;S.live=true;
+  S.qs=DEMO[S.sub];S.i=0;S.ans=[];
+  $("who").textContent=fn+" "+ln+" · "+S.grade+"-"+S.cl;
+  render();show("s3");
+};
+
+function render(){
+  var q=S.qs[S.i],last=S.i===S.qs.length-1;
+  $("cnt").textContent=(S.i+1)+" / "+S.qs.length;
+  $("prog").style.width=(S.i/S.qs.length*100)+"%";
+  $("qt").textContent=q[0];
+  $("opts").innerHTML="";
+  q[1].forEach(function(t,k){
+    var b=document.createElement("button");b.className="opt"+(S.ans[S.i]===k?" on":"");
+    b.innerHTML="<b>"+"ABCDEF"[k]+"</b><span></span>";b.lastChild.textContent=t;
+    b.onclick=function(){S.ans[S.i]=k;render()};
+    $("opts").appendChild(b);
+  });
+  var done=S.ans[S.i]!==undefined;
+  $("next").classList.toggle("hide",last);$("next").disabled=!done;
+  $("finish").classList.toggle("hide",!(last&&done));
+}
+$("next").onclick=function(){if(S.ans[S.i]!==undefined){S.i++;render()}};
+
+/* qoidabuzarlikni aniqlash */
+function DONE(){try{return JSON.parse(localStorage.getItem("mt_done")||"{}")}catch(e){return{}}}
+function markDone(k){try{var d=DONE();d[k]=1;localStorage.setItem("mt_done",JSON.stringify(d))}catch(e){}}
+var lastV=0;
+function viol(type){
+  if(!S.live||Date.now()-lastV<1200)return;lastV=Date.now();S.v++;
+  try{var a=JSON.parse(localStorage.getItem("mt_alerts")||"[]");a.push({t:Date.now(),name:S.fn+" "+S.ln,cls:S.grade+"-"+S.cl,subject:S.sub,type:type,n:S.v,ended:S.v>=3});localStorage.setItem("mt_alerts",JSON.stringify(a))}catch(e){}
+  if(S.v>=3){finishTest("Qoidani 3 marta buzganingiz uchun test avtomatik yakunlandi.");return}
+  var w=$("warn");w.textContent="Ogohlantirish "+S.v+"/3: "+type+". 3-martada test yakunlanadi.";w.classList.remove("hide")}
+document.addEventListener("visibilitychange",function(){if(document.hidden)viol("Boshqa oynaga oʻtdi")});
+window.addEventListener("blur",function(){viol("Oyna fokusdan chiqdi")});
+document.addEventListener("copy",function(e){if(S.live){e.preventDefault();viol("Savolni nusxaladi")}});
+document.addEventListener("cut",function(e){if(S.live){e.preventDefault();viol("Savolni nusxaladi")}});
+document.addEventListener("contextmenu",function(e){if(S.live){e.preventDefault();viol("Oʻng tugma bosildi")}});
+document.addEventListener("keydown",function(e){if(!S.live)return;var k=(e.key||"").toLowerCase(),c=e.ctrlKey||e.metaKey;
+  if(k==="f12"||(c&&e.shiftKey&&"ijc".indexOf(k)>-1)||(c&&"uscpa".indexOf(k)>-1)){e.preventDefault();viol("Taqiqlangan tugmalar bosildi")}});
+document.addEventListener("keyup",function(e){if(e.key==="PrintScreen")viol("Skrinshot tugmasi bosildi")});
+
+function label(p){return p>=85?"Aʼlo":p>=75?"Yaxshi":p>=50?"Qoniqarli":p>=35?"Qoniqarsiz":"Yomon"}
+function finishTest(note){
+  S.live=false;$("warn").classList.add("hide");var ok=0;S.qs.forEach(function(q,k){if(S.ans[k]===q[2])ok++});
+  S.ok=ok;S.pct=Math.round(ok/S.qs.length*100);
+  $("who2").textContent=S.fn+" "+S.ln+" · "+S.grade+"-"+S.cl+" · "+S.sub;
+  $("pct").textContent=S.pct+"%";
+  $("raw").textContent=ok+" / "+S.qs.length+" toʻgʻri";
+  $("grade").textContent=label(S.pct);
+  $("endnote").textContent=note||"";
+  show("s4");
+}
+$("finish").onclick=function(){finishTest("")};
+
+function esc(t){return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+$("word").onclick=function(){
+  var h="<html xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset='utf-8'></head><body>"+
+  "<h2>"+esc(S.sub)+" testi</h2><p>"+esc(S.fn+" "+S.ln)+", "+S.grade+"-"+S.cl+" sinf</p>"+
+  "<p><b>Natija: "+S.pct+"% ("+S.ok+"/"+S.qs.length+") — "+label(S.pct)+"</b></p>";
+  S.qs.forEach(function(q,k){
+    h+="<p><b>"+(k+1)+". "+esc(q[0])+"</b><br>";
+    q[1].forEach(function(t,j){h+="ABCDEF"[j]+") "+esc(t)+(j===q[2]?" ✓":"")+(j===S.ans[k]&&j!==q[2]?" ✗":"")+"<br>"});
+    h+="</p>";
+  });
+  h+="</body></html>";
+  try{
+    var a=document.createElement("a");
+    a.href=URL.createObjectURL(new Blob(["\ufeff",h],{type:"application/msword"}));
+    a.download=S.ln+"_"+S.fn+"_test.doc";document.body.appendChild(a);a.click();a.remove();
+  }catch(e){}
+  $("fn").value="";$("ln").value="";
+  $("gtitle").textContent=S.grade;
+  show("s2");
+};
+</script>
+</body>
+</html>
