@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maktab testlari</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#17212f;--mute:#5d6a7b;--line:#d9dee5;--brand:#1f3a5f;--brand-ink:#fff;--ok:#1d7a4d;--sel:#e6edf7;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10161e;--card:#18212c;--ink:#e8edf3;--mute:#9aa7b7;--line:#2b3746;--brand:#7fa6d8;--brand-ink:#10161e;--ok:#4cc38a;--sel:#223248}}
+:root[data-theme="dark"]{--bg:#10161e;--card:#18212c;--ink:#e8edf3;--mute:#9aa7b7;--line:#2b3746;--brand:#7fa6d8;--brand-ink:#10161e;--ok:#4cc38a;--sel:#223248}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--brand);color:var(--brand-ink);padding:14px 18px;font-family:Georgia,"Times New Roman",serif;font-size:19px;letter-spacing:.2px}
+main{max-width:520px;margin:0 auto;padding:20px 16px 40px}
+h1{font:600 24px/1.25 Georgia,"Times New Roman",serif;margin:8px 0 6px}
+p.sub{color:var(--mute);margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.grade{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px 8px;font:600 22px Georgia,serif;color:var(--ink);cursor:pointer}
+.grade small{display:block;font:14px system-ui,sans-serif;color:var(--mute);margin-top:2px}
+.grade:hover,.grade:focus-visible{border-color:var(--brand);outline:2px solid var(--brand);outline-offset:1px}
+label{display:block;font-weight:600;margin:14px 0 6px}
+input,select{width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:inherit}
+input:focus,select:focus{outline:2px solid var(--brand);border-color:var(--brand)}
+.row{display:grid;grid-template-columns:1fr 90px;gap:10px}
+.btn{display:block;width:100%;margin-top:22px;padding:14px;border:0;border-radius:8px;background:var(--brand);color:var(--brand-ink);font:600 16px system-ui,sans-serif;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand);margin-top:10px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.back{background:none;border:0;color:var(--mute);padding:4px 0;font:inherit;cursor:pointer;margin-bottom:6px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:6px 0 16px}
+.bar i{display:block;height:100%;background:var(--brand);transition:width .25s}
+.meta{display:flex;justify-content:space-between;color:var(--mute);font-size:14px}
+.q{font:600 19px/1.4 Georgia,serif;margin:0 0 14px}
+.opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:13px;margin-bottom:10px;color:var(--ink);font:inherit;cursor:pointer}
+.opt b{min-width:22px;color:var(--mute)}
+.opt.on{background:var(--sel);border-color:var(--brand);outline:1px solid var(--brand)}
+.score{text-align:center;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:26px 14px;margin:14px 0}
+.score .n{font:700 52px Georgia,serif;color:var(--brand)}
+.score .g{font:600 20px Georgia,serif;margin-top:4px}
+.who{color:var(--mute);font-size:15px}
+.hide{display:none}
+.err{color:#b3362d;margin-top:10px;min-height:20px;font-weight:600}
+@media (prefers-color-scheme:dark){.err{color:#ef7b72}}
+#warn{background:#b3362d;color:#fff;padding:10px 12px;border-radius:8px;margin-bottom:12px;font-weight:600}
+#s3{user-select:none;-webkit-user-select:none}
+@media (min-width:900px){
+header{padding:18px max(32px,calc((100% - 1000px)/2));font-size:22px}
+main{max-width:1000px;padding:48px 32px 64px}
+h1{font-size:34px}
+p.sub{font-size:18px;margin-bottom:28px}
+.grid{grid-template-columns:repeat(3,1fr);gap:18px}
+.grade{padding:42px 8px;font-size:34px}
+#s2,#s3,#s4{margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:32px 40px}
+#s2,#s4{max-width:620px}
+#s3{max-width:780px}
+#s2 input,#s2 select{background:var(--bg)}
+.score{background:var(--bg)}
+.q{font-size:23px;margin-bottom:20px}
+#opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt{margin-bottom:0;background:var(--bg)}
+.opt.on{background:var(--sel)}
+.btn{width:auto;min-width:240px;margin-left:auto}
+}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<header>Maktab testlari</header>
+<main>
+
+<section id="s1">
+  <h1>Sinfingizni tanlang</h1>
+  <p class="sub">Test ishlash uchun sinfni bosing.</p>
+  <div class="grid" id="grades"></div>
+</section>
+
+<section id="s2" class="hide">
+  <button class="back" id="back1">‹ Sinfni oʻzgartirish</button>
+  <h1><span id="gtitle"></span>-sinf</h1>
+  <p class="sub">Maʼlumotlaringizni kiriting.</p>
+  <p class="sub">Test vaqtida boshqa oynaga oʻtish, nusxalash yoki oʻng tugmani bosish qoidabuzarlik hisoblanadi. 3 marta buzilsa test avtomatik yakunlanadi. Har fandan faqat bir marta test ishlash mumkin.</p>
+  <label for="fn">Ism</label><input id="fn" autocomplete="off">
+  <label for="ln">Familya</label><input id="ln" autocomplete="off">
+  <div class="row">
+    <div><label for="sub">Fan</label><select id="sub"></select></div>
+    <div><label for="cl">Sinf harfi</label><select id="cl"></select></div>
+  </div>
+  <button class="btn" id="start">Testni boshlash</button>
+  <div class="err" id="serr"></div>
+</section>
+
+<section id="s3" class="hide">
+  <div id="warn" class="hide"></div>
+  <div class="meta"><span id="who"></span><span id="cnt"></span></div>
+  <div class="bar"><i id="prog"></i></div>
+  <p class="q" id="qt"></p>
+  <div id="opts"></div>
+  <button class="btn" id="next">Keyingi savol</button>
+  <button class="btn" id="finish">Testni yakunlash</button>
+</section>
+
+<section id="s4" class="hide">
+  <h1>Natija</h1>
+  <p class="who" id="who2"></p>
+  <p class="err" id="endnote"></p>
+  <div class="score"><div class="n" id="pct"></div><div id="raw" class="who"></div><div class="g" id="grade"></div></div>
+  <button class="btn" id="word">Testni Wordda saqlash</button>
+</section>
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="supabase-config.js"></script>
+<script>
+var $=function(i){return document.getElementById(i)};
+var S={grade:null,fn:"",ln:"",cl:"",sub:"",qs:[],i:0,ans:[]};
+function show(id){["s1","s2","s3","s4"].forEach(function(x){$(x).classList.toggle("hide",x!==id)});window.scrollTo(0,0)}
+
+function loadGrades(){
+  $("grades").innerHTML="";
+  sb.from("classes").select("grade").then(function(r){
+    if(r.error){$("grades").innerHTML='<p style="color:#c0392b">Maʼlumotlarni yuklab boʻlmadi. Internetni tekshiring.</p>';return}
+    var seen={},a=[];r.data.forEach(function(c){if(!seen[c.grade]){seen[c.grade]=1;a.push(c.grade)}});
+    a.sort(function(x,y){return x-y});
+    if(!a.length){$("grades").innerHTML="<p>Hozircha sinflar qoʻshilmagan.</p>";return}
+    a.forEach(function(g){var b=document.createElement("button");b.className="grade";b.innerHTML=g+"<small>sinf</small>";
+      b.onclick=function(){S.grade=g;$("gtitle").textContent=g;loadOpts(g);show("s2")};$("grades").appendChild(b)});
+  });
+}
+loadGrades();
+function loadOpts(g){
+  $("sub").innerHTML="";$("cl").innerHTML="";$("start").disabled=true;$("serr").textContent="";
+  Promise.all([sb.from("classes").select("letter").eq("grade",g).order("letter"),sb.from("tests").select("subjects(name)").eq("grade",g)]).then(function(r){
+    if(r[0].error||r[1].error){$("serr").textContent="Maʼlumotlarni yuklab boʻlmadi. Internetni tekshiring.";return}
+    r[0].data.forEach(function(c){$("cl").add(new Option(c.letter,c.letter))});
+    var seen={};r[1].data.forEach(function(t){var n=t.subjects&&t.subjects.name;if(n&&!seen[n]){seen[n]=1;$("sub").add(new Option(n,n))}});
+    if(!$("sub").options.length||!$("cl").options.length)$("serr").textContent="Bu sinf uchun hozircha test yoʻq.";else $("start").disabled=false;
+  }).catch(function(){$("serr").textContent="Maʼlumotlarni yuklab boʻlmadi."});
+}
+$("back1").onclick=function(){show("s1")};
+
+$("start").onclick=function(){
+  var fn=$("fn").value.trim(),ln=$("ln").value.trim(),cl=$("cl").value,sub=$("sub").value;
+  $("serr").textContent="";if(!fn||!ln){$("serr").textContent="Ism va familyani kiriting.";return}
+  $("start").disabled=true;
+  sb.rpc("start_test",{p_first:fn,p_last:ln,p_grade:S.grade,p_letter:cl,p_subject:sub}).then(function(r){
+    $("start").disabled=false;
+    if(r.error||!r.data){$("serr").textContent="Aloqa xatosi. Qayta urinib koʻring.";return}
+    var d=r.data,key=[fn,ln,S.grade,cl,sub,d.test_id].join("|").toLowerCase();
+    if(d.error==="taken"||DONE()[key]){$("serr").textContent="Siz bu fandan test topshirgansiz. Qayta kirish mumkin emas.";return}
+    if(d.error){$("serr").textContent="Bu fan uchun test topilmadi.";return}
+    S.fn=fn;S.ln=ln;S.cl=cl;S.sub=sub;S.tid=d.test_id;
+    markDone(key);S.v=0;S.live=true;
+    S.qs=d.qs.map(function(x){return[x.q,x.o]});S.i=0;S.ans=[];
+    $("who").textContent=fn+" "+ln+" · "+S.grade+"-"+S.cl;
+    render();show("s3");
+  }).catch(function(){$("start").disabled=false;$("serr").textContent="Aloqa xatosi. Qayta urinib koʻring."});
+};
+
+function render(){
+  var q=S.qs[S.i],last=S.i===S.qs.length-1;
+  $("cnt").textContent=(S.i+1)+" / "+S.qs.length;
+  $("prog").style.width=(S.i/S.qs.length*100)+"%";
+  $("qt").textContent=q[0];
+  $("opts").innerHTML="";
+  q[1].forEach(function(t,k){
+    var b=document.createElement("button");b.className="opt"+(S.ans[S.i]===k?" on":"");
+    b.innerHTML="<b>"+"ABCDEF"[k]+"</b><span></span>";b.lastChild.textContent=t;
+    b.onclick=function(){S.ans[S.i]=k;render()};
+    $("opts").appendChild(b);
+  });
+  var done=S.ans[S.i]!==undefined;
+  $("next").classList.toggle("hide",last);$("next").disabled=!done;
+  $("finish").classList.toggle("hide",!(last&&done));
+}
+$("next").onclick=function(){if(S.ans[S.i]!==undefined){S.i++;render()}};
+
+/* qoidabuzarlikni aniqlash */
+function DONE(){try{return JSON.parse(localStorage.getItem("mt_done")||"{}")}catch(e){return{}}}
+function markDone(k){try{var d=DONE();d[k]=1;localStorage.setItem("mt_done",JSON.stringify(d))}catch(e){}}
+var lastV=0;
+function viol(type){
+  if(!S.live||Date.now()-lastV<1200)return;lastV=Date.now();S.v++;
+  try{sb.from("alerts").insert({student_name:S.fn+" "+S.ln,cls:S.grade+"-"+S.cl,subject:S.sub,type:type,n:S.v,ended:S.v>=3}).then(function(){})}catch(e){}
+  if(S.v>=3){finishTest("Qoidani 3 marta buzganingiz uchun test avtomatik yakunlandi.");return}
+  var w=$("warn");w.textContent="Ogohlantirish "+S.v+"/3: "+type+". 3-martada test yakunlanadi.";w.classList.remove("hide")}
+document.addEventListener("visibilitychange",function(){if(document.hidden)viol("Boshqa oynaga oʻtdi")});
+window.addEventListener("blur",function(){viol("Oyna fokusdan chiqdi")});
+document.addEventListener("copy",function(e){if(S.live){e.preventDefault();viol("Savolni nusxaladi")}});
+document.addEventListener("cut",function(e){if(S.live){e.preventDefault();viol("Savolni nusxaladi")}});
+document.addEventListener("contextmenu",function(e){if(S.live){e.preventDefault();viol("Oʻng tugma bosildi")}});
+document.addEventListener("keydown",function(e){if(!S.live)return;var k=(e.key||"").toLowerCase(),c=e.ctrlKey||e.metaKey;
+  if(k==="f12"||(c&&e.shiftKey&&"ijc".indexOf(k)>-1)||(c&&"uscpa".indexOf(k)>-1)){e.preventDefault();viol("Taqiqlangan tugmalar bosildi")}});
+document.addEventListener("keyup",function(e){if(e.key==="PrintScreen")viol("Skrinshot tugmasi bosildi")});
+
+function label(p){return p>=85?"Aʼlo":p>=75?"Yaxshi":p>=50?"Qoniqarli":p>=35?"Qoniqarsiz":"Yomon"}
+function finishTest(note){
+  S.live=false;$("warn").classList.add("hide");
+  var ans=S.qs.map(function(q,k){return S.ans[k]===undefined?-1:S.ans[k]});
+  $("finish").disabled=true;$("next").disabled=true;
+  sb.rpc("submit_test",{p_first:S.fn,p_last:S.ln,p_grade:S.grade,p_letter:S.cl,p_subject:S.sub,p_test_id:S.tid,p_answers:ans}).then(function(r){
+    if(r.error||!r.data||r.data.error)throw 1;
+    var d=r.data;S.ok=d.ok;S.pct=d.pct;S.total=d.total;
+    S.qs.forEach(function(q,k){q[2]=d.key[k]});
+    $("finish").disabled=false;
+    $("who2").textContent=S.fn+" "+S.ln+" · "+S.grade+"-"+S.cl+" · "+S.sub;
+    $("pct").textContent=S.pct+"%";
+    $("raw").textContent=S.ok+" / "+S.total+" toʻgʻri";
+    $("grade").textContent=label(S.pct);
+    $("endnote").textContent=note||"";
+    show("s4");
+  }).catch(function(){
+    var w=$("warn");w.textContent="Natijani saqlab boʻlmadi (aloqa xatosi). Internetni tekshirib, «Testni yakunlash» tugmasini qayta bosing.";w.classList.remove("hide");
+    $("next").classList.add("hide");$("finish").classList.remove("hide");$("finish").disabled=false;
+    $("finish").onclick=function(){finishTest(note)};
+  });
+}
+$("finish").onclick=function(){finishTest("")};
+
+function esc(t){return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+$("word").onclick=function(){
+  var h="<html xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset='utf-8'></head><body>"+
+  "<h2>"+esc(S.sub)+" testi</h2><p>"+esc(S.fn+" "+S.ln)+", "+S.grade+"-"+S.cl+" sinf</p>"+
+  "<p><b>Natija: "+S.pct+"% ("+S.ok+"/"+S.total+") — "+label(S.pct)+"</b></p>";
+  S.qs.forEach(function(q,k){
+    h+="<p><b>"+(k+1)+". "+esc(q[0])+"</b><br>";
+    q[1].forEach(function(t,j){h+="ABCDEF"[j]+") "+esc(t)+(j===q[2]?" ✓":"")+(j===S.ans[k]&&j!==q[2]?" ✗":"")+"<br>"});
+    h+="</p>";
+  });
+  h+="</body></html>";
+  try{
+    var a=document.createElement("a");
+    a.href=URL.createObjectURL(new Blob(["\ufeff",h],{type:"application/msword"}));
+    a.download=S.ln+"_"+S.fn+"_test.doc";document.body.appendChild(a);a.click();a.remove();
+  }catch(e){}
+  $("fn").value="";$("ln").value="";
+  $("gtitle").textContent=S.grade;
+  show("s2");
+};
+</script>
+</body>
+</html>
